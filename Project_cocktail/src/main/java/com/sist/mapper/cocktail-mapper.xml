@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.cocktail-mapper">
+<resultMap type="CocktailVO" id="cocktailMap">
+	<result property="crivo.volume" column="volume" />
+	<result property="crivo.unit" column="unit" />
+	<result property="civo.comments" column="comments" />
+	<result property="civo.ingname" column="ingname" />
+	<result property="civo.ciimage" column="ciimage" />
+	<result property="civo.ingtag" column="ingtag" />
+</resultMap>
+	<select id="cocktailData" resultType="CocktailVO">
+		SELECT *
+		FROM (SELECT * FROM cocktail ORDER BY DBMS_RANDOM.RANDOM)
+		WHERE rownum&lt;=1
+	</select>
+	<select id="cocktailRecipeData" resultMap="cocktailMap" parameterType="int">
+		SELECT ingname,cocktail_ingredients.comments,ciimage,ingtag,volume,unit
+		FROM cocktail,cocktail_ingredients ,COCKTAIL_RECIPE
+		WHERE cocktail.cocktail_no=COCKTAIL_RECIPE.cocktail_no
+		AND cocktail_ingredients.ing_no = COCKTAIL_RECIPE.ing_no
+		AND cocktail.cocktail_no=#{cno}
+	</select>
+</mapper>
