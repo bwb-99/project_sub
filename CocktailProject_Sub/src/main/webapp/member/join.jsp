@@ -32,137 +32,7 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Humberger Begin -->
-    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="../main/main.do">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="">칵테일바</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Humberger End -->
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="header__top__right">
-
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> 로그인</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="../main/main.do">Home</a></li>
-                            
-                            <li><a href="#">칵테일</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="cocktail/cocktail_list.do">칵테일 목록</a></li>
-                                    <li><a href="./shoping-cart.html">재료 목록</a></li>
-                                    <li><a href="./shoping-cart.html">칵테일 검색</a></li>
-                                    <li><a href="./checkout.html">나만의 칵테일</a></li>
-                                </ul>
-                            </li>
-                            
-                             <li><a href="#">칵테일바</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">칵테일바 목록</a></li>
-                                    <li><a href="./shoping-cart.html">칵테일바 관리</a></li>
-                                    <c:if test="${sessionScope.id!=null }">
-                                    <li><a href="./checkout.html">칵테일바 예약</a></li>
-                                    </c:if>
-                                </ul>
-                            </li>
-                            <li><a href="#">상품</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">주류상품 목록</a></li>
-                                    <li><a href="./shoping-cart.html">용품 목록</a></li>
-                                    <li><a href="./shoping-cart.html">주류상품 검색</a></li>
-                                    <li><a href="./shoping-cart.html">용품 검색</a></li>
-                                </ul>
-                            </li>
-                             <li><a href="#">커뮤니티</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">자유게시판</a></li>
-                                    <li><a href="./shoping-cart.html">묻고 답하기</a></li>
-                                    <li><a href="./checkout.html">공지사항</a></li>
-                                    <c:if test="${sessionScope.id!=null }">
-                                    <li><a href="./checkout.html">실시간 채팅</a></li>
-                                    </c:if>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">총가격: <span>$150.00</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
+    
     <!-- Header Section End -->
 
 <!-- 
@@ -288,7 +158,7 @@
     <!-- Checkout Section End -->
 
 
-<jsp:include page="../main/footer.jsp" />
+
     <!-- Js Plugins -->
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
