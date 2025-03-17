@@ -25,7 +25,35 @@ public class CocktailMemberModel {
 	        return "../member/error.jsp"; // 오류 발생 시 이동할 페이지
 	    }
 	}
-	 /*
+	 @RequestMapping("member/idcheck.do")
+	   public String member_idcheck(HttpServletRequest request,
+			   HttpServletResponse response)
+	   {
+		   return "../member/idcheck.jsp";
+	   }
+	 
+	 @RequestMapping("member/idcheck_ok.do")
+	   public void member_idcheck_ok(HttpServletRequest request,
+			   HttpServletResponse response)
+	   {
+		   // void => 일반 데이터 (String , int)
+		   // => JSON
+		   // data:{"id":id.trim()} ?id=aaa
+		   String id=request.getParameter("id");
+		   int count=CocktailMemberDAO.memberIdcheck(id);
+		   
+		   try
+		   {
+			   response.setContentType("text/html;charset=UTF-8");
+			   PrintWriter out=response.getWriter();
+			   out.write(String.valueOf(count));
+		   }catch(Exception ex) 
+		   {
+			   ex.printStackTrace();
+		   }
+		   
+	   }
+	 
 	 @RequestMapping("member/join_ok.do")
 	   // MemberVO vo
 	   public String member_join_ok(HttpServletRequest request,
@@ -63,7 +91,7 @@ public class CocktailMemberModel {
 		   return "redirect:../main/main.do";
 	   }
 	   
-	 */
+	 
 	@RequestMapping("member/login.do")
 	public String member_login(HttpServletRequest request,
 			   HttpServletResponse response)
@@ -94,16 +122,29 @@ public class CocktailMemberModel {
 			   session.setAttribute("name", vo.getName());
 			   session.setAttribute("sex", vo.getSex());
 			   session.setAttribute("admin", vo.getAdmin());
-			   // post / addr1 / addr2 / email / phone 
+			   session.setAttribute("post", vo.getPost());
+			   session.setAttribute("address", vo.getAddress());
+			   session.setAttribute("address_detail", vo.getAddress_detail());
+			   session.setAttribute("phone", vo.getPhone());
 		   }
 		   try
 		   {
 			   response.setContentType("text/html;charset=UTF-8");
 			   PrintWriter out=response.getWriter();
 			   out.write(vo.getMsg());
-		   }catch(Exception ex) {
+		   }catch(Exception ex) 
+		   {
 			   ex.printStackTrace();
 		   }
 	   }
+	// 로그아웃 
+	   @RequestMapping("member/logout.do")
+	   public String member_logout(HttpServletRequest request,
+			   HttpServletResponse response)
+	   {
+		   HttpSession session=request.getSession();
+		   session.invalidate();
+		   return "redirect:../main/main.do";
+	   }
+	}
 
-}

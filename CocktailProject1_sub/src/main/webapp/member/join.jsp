@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -11,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>로그인</title>
-
+	
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+	
     <!-- Css Styles -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
@@ -24,147 +23,82 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="stylesheet" href="../shadow/css/shadowbox.css">
+    <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="../shadow/js/shadowbox.js"></script>
+    <script type="text/javascript">
+    Shadowbox.init({
+    	players:['iframe']
+    })
+    $(function(){
+    	$('#idBtn').on('click',function(){
+    		Shadowbox.open({
+    			content:'../member/idcheck.do',
+    			player:'iframe',
+    			width:370,
+    			height:250,
+    			title:'아이디 중복체크'
+    		})
+    	})
+    	
+    	$('#postBtn').click(function(){
+    		new daum.Postcode({
+    			oncomplete:function(data)
+    			{
+    				$('#post').val(data.zonecode)
+    				$('#address').val(data.address)
+    			}
+    		}).open()
+    	})
+    		
+    	$('#joinBtn').click(function(){
+    		let id=$('#id').val()
+    		if(id.trim()==="")
+    		{
+    			alert("ID 중복체크를 해야 됩니다")
+    			return
+    		}
+    		let pwd1=$('#pwd1').val()
+    		if(pwd1.trim()==="")
+    		{
+    			$('#pwd1').focus()
+    			return
+    		}
+    		let pwd2=$('#pwd2').val()
+    		if(pwd1!==pwd2)
+    		{
+    		    alert("비밀번호가 틀립니다")
+    		    $('#pwd2').val("")
+    		    $('#pwd2').focus()
+    		    return
+    		}
+    		
+    		let name=$('#name').val()
+    		if(name.trim()==="")
+    		{
+    			$('#name').focus()
+    			return
+    		}
+    		
+    		let post=$('#post').val()
+    		if(post.trim()==="")
+    		{
+    			alert("우편번호 검색을 해야 됩니다")
+    			return
+    		}
+    		
+    		$('#frm').submit()
+    	})
+    })
+    </script>
+    
+    
+    
+    
 </head>
 
 <body>
-
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Humberger Begin -->
-    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__auth">
-                <a href="../member/join.do"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="../main/main.do">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="">칵테일바</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Humberger End -->
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="header__top__right">
-
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> 로그인</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="../main/main.do">Home</a></li>
-                            
-                            <li><a href="#">칵테일</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="cocktail/cocktail_list.do">칵테일 목록</a></li>
-                                    <li><a href="./shoping-cart.html">재료 목록</a></li>
-                                    <li><a href="./shoping-cart.html">칵테일 검색</a></li>
-                                    <li><a href="./checkout.html">나만의 칵테일</a></li>
-                                </ul>
-                            </li>
-                            
-                             <li><a href="#">칵테일바</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">칵테일바 목록</a></li>
-                                    <li><a href="./shoping-cart.html">칵테일바 관리</a></li>
-                                    <c:if test="${sessionScope.id!=null }">
-                                    <li><a href="./checkout.html">칵테일바 예약</a></li>
-                                    </c:if>
-                                </ul>
-                            </li>
-                            <li><a href="#">상품</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">주류상품 목록</a></li>
-                                    <li><a href="./shoping-cart.html">용품 목록</a></li>
-                                    <li><a href="./shoping-cart.html">주류상품 검색</a></li>
-                                    <li><a href="./shoping-cart.html">용품 검색</a></li>
-                                </ul>
-                            </li>
-                             <li><a href="#">커뮤니티</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">자유게시판</a></li>
-                                    <li><a href="./shoping-cart.html">묻고 답하기</a></li>
-                                    <li><a href="./checkout.html">공지사항</a></li>
-                                    <c:if test="${sessionScope.id!=null }">
-                                    <li><a href="./checkout.html">실시간 채팅</a></li>
-                                    </c:if>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">총가격: <span>$150.00</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
 
 <!-- 
 
@@ -190,96 +124,73 @@
         <div class="container">
             <div class="checkout__form">
                 <h4>회원가입</h4>
-                <form action="#">
+                 <form method=post action="../member/join_ok.do" name="frm" id="frm">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                            <!-- <div class="row">   -->
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>아이디<span>*</span></p>
-                                        <input type="text" placeholder="아이디를 입력하세요,">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>패스워드<span>*</span></p>
-                                        <input type="password" placeholder="패스워드를 입력하세요.">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>이름<span>*</span></p>
-                                        <input type="text" placeholder="이름을 입력하세요.">
-                                    </div>
-                                </div>
-                            <!--  </div>  -->
-                            <div class="checkout__input">
-                                <p>Country<span>*</span></p>
+
+                           <div class="checkout__input">
+							    <p>아이디<span>*</span></p>
+							    <input type="text" placeholder="아이디를 입력하세요." name="id" id="id" size="15" class="form-control-sm" readonly>
+							    <input type="button" id="idBtn" value="아이디중복체크" class="btn-sm btn-primary">
+							    <span id="idCheckResult"></span>
+							</div>
+							
+ 
+                           <div class="checkout__input">
+                                <p>패스워드<span>*</span></p>
+                                <input type="password"name="pwd" id="pwd1" placeholder="패스워드를 입력하세요.">
+				                <input type=password name="pwd1" id="pwd2" placeholder="비밀번호 재입력" required>      
+                           </div>
+
+
+                           <div class="checkout__input">
+                                <p>이름<span>*</span></p>
+                                <input type="text" placeholder="이름을 입력하세요.">
+                           </div>
+
+                           <div class="checkout__input">
+                                <p>이메일<span>*</span></p>
                                 <input type="text">
-                            </div>
+                           </div>
 				                <th width=15% class="text-center" style="color:gray">성별<br></th>
 				                <br>
-				               <td width=85%>
+				                <td width=85%>
 				                <input type="radio" name="sex" value="남자" checked>남자
 				                <input type="radio" name="sex" value="여자">여자
-				               </td>
+				                </td>
                             <div class="checkout__input">
                                 <br><p>주소<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                                <input type="text" id="addr1" name="addr1" placeholder="주소" class="checkout__input__add">
+                                <input type="text" name="addr2" placeholder="상세주소">
+                                <input type=button value="우편번호검색" class="btn-sm btn-danger" id="postBtn">
                             </div>
-                            <div class="checkout__input">
-                                <p>주소<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>상세주소<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Phone<span>*</span></p>
-                                        <input type="text">
-                                    </div>
+                                <div class="checkout__input">
+                                       <p>전화번호<span>*</span></p>
+                                       <select name="phone1" class="form-control-sm">
+						                </select>
+						                <input type=text name="phone2">
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Create an account?
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <p>Create an account by entering the information below. If you are a returning customer
-                                please login at the top of the page</p>
-                            <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Ship to a different address?
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text"
-                                    placeholder="Notes about your order, e.g. special notes for delivery.">
-                            </div>
-                        </div>
+                                    
+                            
+                        <div class="checkout__input">
+                                <p>소개<span>*</span></p>
+                                <input type="text" placeholder="자기소개 및 관심사를 알려주세요.">
+                       </div>          
+                         <div class="checkout__input__checkbox">
+                            <label for="acc">
+                                  동의합니다.
+                                  <input type="checkbox" id="acc">
+                              <span class="checkmark"></span>
+                             </label>
+                         </div>
+                            <p>정보제공에 동의하시면 체크해주세요.</p>
+                      </div>
+                      <br>
+                      <div class="col-lg-8 col-md-6">
+                      		<input type=button value="회원가입" class="btn-sm btn-primary" id="joinBtn">
+                      		<input type=button value="취소" class="btn-sm btn-warning" onclick="javascript:history.back()">
+                    </div>
 
                     </div>
                 </form>
@@ -289,7 +200,6 @@
     <!-- Checkout Section End -->
 
 
-<jsp:include page="../main/footer.jsp" />
     <!-- Js Plugins -->
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
