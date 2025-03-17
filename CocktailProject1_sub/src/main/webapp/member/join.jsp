@@ -43,15 +43,15 @@
     	})
     	
     	$('#postBtn').click(function(){
-    		new daum.Postcode({
-    			oncomplete:function(data)
-    			{
-    				$('#post').val(data.zonecode)
-    				$('#address').val(data.address)
-    			}
-    		}).open()
-    	})
-    		
+		new daum.Postcode({
+			oncomplete:function(data)
+			{
+				$('#post').val(data.zonecode)
+				$('#address').val(data.address)
+					}
+				}).open()
+			})
+		    		
     	$('#joinBtn').click(function(){
     		let id=$('#id').val()
     		if(id.trim()==="")
@@ -92,12 +92,7 @@
     	})
     })
     </script>
-    
-    
-    
-    
 </head>
-
 <body>
 
 <!-- 
@@ -139,44 +134,63 @@
  
                            <div class="checkout__input">
                                 <p>패스워드<span>*</span></p>
-                                <input type="password"name="pwd" id="pwd1" placeholder="패스워드를 입력하세요.">
-				                <input type=password name="pwd1" id="pwd2" placeholder="비밀번호 재입력" required>      
+                                <input type="password"name="pwd1" id="pwd1" placeholder="패스워드를 입력하세요.">
+				                <input type=password name="pwd2" id="pwd2" placeholder="비밀번호 재입력" required>      
                            </div>
 
 
                            <div class="checkout__input">
                                 <p>이름<span>*</span></p>
-                                <input type="text" placeholder="이름을 입력하세요.">
+                                <input type="text" name="name" id="name" placeholder="이름을 입력하세요.">
                            </div>
+                           
+                           <th width=15% class="text-center" style="color:gray">성별<br></th>
+				                <br>
+				                <td width=85%>
+				                <input type="radio" name="sex" value="남자" checked>남자
+				                <input type="radio" name="sex" value="여자">여자
+				             </td>
 
                            <div class="checkout__input">
                                 <p>이메일<span>*</span></p>
                                 <input type="text">
                            </div>
-				                <th width=15% class="text-center" style="color:gray">성별<br></th>
-				                <br>
-				                <td width=85%>
-				                <input type="radio" name="sex" value="남자" checked>남자
-				                <input type="radio" name="sex" value="여자">여자
-				                </td>
+				                
+				            <div class="checkout__input">
+                            	<p>생년월일<span>*</span></p>
+                                <input type="date" name="birthday" class="form-control-sm">
+                            </div>
                             <div class="checkout__input">
-                                <br><p>주소<span>*</span></p>
-                                <input type="text" id="addr1" name="addr1" placeholder="주소" class="checkout__input__add">
-                                <input type="text" name="addr2" placeholder="상세주소">
+                                <br><p>우편주소<span>*</span></p>
+                                <input type=text id="post" name="post" class="form-control-sm" placeholder="우편주소" readonly>
                                 <input type=button value="우편번호검색" class="btn-sm btn-danger" id="postBtn">
                             </div>
-                                <div class="checkout__input">
-                                       <p>전화번호<span>*</span></p>
-                                       <select name="phone1" class="form-control-sm">
-						                </select>
-						                <input type=text name="phone2">
-                                </div>
-                                    
                             
-                        <div class="checkout__input">
+                            <div class="checkout__input">
+                            	<p>주소<span>*</span></p>
+                                <input type="text" id="address" name="address" placeholder="주소" class="form-control-sm" readonly>
+                                <input type="text" name="address_detail" placeholder="상세주소" >
+                            </div>
+                            <div class="checkout__input">
                                 <p>소개<span>*</span></p>
                                 <input type="text" placeholder="자기소개 및 관심사를 알려주세요.">
-                       </div>          
+                       		</div> 
+                             <div class="checkout__input">
+                                     <p>전화번호<span>*</span></p>
+                                     <select name="phone1" class="form-control-sm">
+                                     <option>010</option>
+						              </select>
+						              <input type=text name="phone2">
+                             </div>
+                             <form method="post" action="../member/join_ok.do" name="frm" id="frm" enctype="multipart/form-data">
+							    <div class="checkout__input">
+							        <p>프로필 사진</p>
+							        <input type="file" name="avatar" id="avatar" accept="image/*">
+							        <br>
+							        <img id="preview" src="#" alt="미리보기" style="max-width: 150px; display: none;">
+							    </div>
+							</form>
+   
                          <div class="checkout__input__checkbox">
                             <label for="acc">
                                   동의합니다.
