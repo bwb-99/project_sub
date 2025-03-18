@@ -26,9 +26,9 @@
 
             <div class="header__top__right__auth">
                 <a href="../member/login.do"><i class="fa fa-user btn btn-outline-primary"></i> 로그인</a>
-            </div>
-            <div>
-                <a href="../member/join.do"><i class="btn btn-outline-primary"></i>/회원가입</a>
+            <a href="../member/login.do"><i class="fa fa-user"></i> 로그인</a>
+               <span>/</span>
+            <a href="../member/join.do">회원가입</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -111,6 +111,8 @@
             
                             <div class="header__top__right__auth">
                                 <a href="../member/login.do"><i class="fa fa-user"></i> 로그인</a>
+                                 <span>/</span>
+                                <a href="../member/join.do">회원가입</a>
                             </div>
                         </div>
                     </div>
