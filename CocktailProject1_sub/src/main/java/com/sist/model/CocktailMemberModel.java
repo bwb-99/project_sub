@@ -66,11 +66,12 @@ public class CocktailMemberModel {
 		   String birthday=request.getParameter("birthday");
 		   String email=request.getParameter("email");
 		   String post=request.getParameter("post");
-		   String Address=request.getParameter("Address");
-		   String Address_detail=request.getParameter("Address_detail");
+		   String address=request.getParameter("address");
+		   String address_detail=request.getParameter("address_detail");
 		   String phone1=request.getParameter("phone1");
 		   String phone2=request.getParameter("phone2");
 		   String coment=request.getParameter("coment");
+		   String avatar=request.getParameter("avatar");
 		   
 		   CocktailMemberVO vo=new CocktailMemberVO
 				   ();
@@ -81,11 +82,11 @@ public class CocktailMemberModel {
 		   vo.setBirthday(birthday);
 		   vo.setEmail(email);
 		   vo.setPost(post);
-		   vo.setAddress(Address);
-		   vo.setAddress_detail(Address_detail);
+		   vo.setAddress(address);
+		   vo.setAddress_detail(address_detail);
 		   vo.setPhone(phone1+"-"+phone2);
 		   vo.setComent(coment);
-		   
+		   vo.setAvatar(avatar);
 		   CocktailMemberDAO.memberInsert(vo);
 		   
 		   return "redirect:../main/main.do";

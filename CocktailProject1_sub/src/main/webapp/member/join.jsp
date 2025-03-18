@@ -134,8 +134,8 @@
  
                            <div class="checkout__input">
                                 <p>패스워드<span>*</span></p>
-                                <input type="password"name="pwd1" id="pwd1" placeholder="패스워드를 입력하세요.">
-				                <input type=password name="pwd2" id="pwd2" placeholder="비밀번호 재입력" required>      
+                                <input type="password"name="pwd" id="pwd1" placeholder="패스워드를 입력하세요.">
+				                <input type=password name="pwd1" id="pwd2" placeholder="비밀번호 재입력" required>      
                            </div>
 
 
@@ -153,7 +153,7 @@
 
                            <div class="checkout__input">
                                 <p>이메일<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="email" >
                            </div>
 				                
 				            <div class="checkout__input">
@@ -173,7 +173,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>소개<span>*</span></p>
-                                <input type="text" placeholder="자기소개 및 관심사를 알려주세요.">
+                                <input type="text" name="coment" placeholder="자기소개 및 관심사를 알려주세요.">
                        		</div> 
                              <div class="checkout__input">
                                      <p>전화번호<span>*</span></p>
